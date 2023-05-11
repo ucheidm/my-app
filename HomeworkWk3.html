@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML/CSS HW</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        padding: 100px 100px;
+        border: 5px solid blueviolet;
+        margin: 100px 250px;
+        position: fixed;
+        font-size: 20px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+      h2 {
+        color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <form id="myForm">
+        <input
+          type="text"
+          placeholder="Enter your country"
+          ,
+          autocomplete="off"
+          ,autofocus="on"
+          ,
+          id="search-city"
+        />
+        <input type="submit" class="btn btn-primary" , value="Search" />
+        <button type="button" class="btn btn-success">Current</button>
+        <p></p>
+        <h2></h2>
+        <br />
+        <h3></h3>
+
+        <div class="row">
+          <div class="col-4">
+            <div class="card">
+              <div class="card-body">
+                <p class="card-text">
+                  <strong id="changed">🌦 34</strong>
+
+                  <a href="#" id="Celsius-link">℃ </a>
+
+                  |
+
+                  <a href="#" id="Fahrenheit-link"> ℉.</a>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card text-center">
+              <div class="card-body">
+                <p class="card-text">
+                  <small>Precipation:30% Humidity:70% Wind: 16km/h.</small>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="card text-end">
+              <div class="card-body">
+                <p class="card-text">Weather Sunday Isolated thurnderstorms</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3">Temperature |</div>
+          <div class="col-3">Precipitation |</div>
+          <div class="col-3">Wind</div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            Sun
+            <br />
+            ⛈
+            <p class="day">34° 25°</p>
+          </div>
+
+          <div class="col">
+            Mon
+            <br />
+            🌦
+            <p class="day">34° 24°</p>
+          </div>
+
+          <div class="col">
+            Tues
+            <br />
+            ⛈
+            <p class="day">34° 23°</p>
+          </div>
+
+          <div class="col">
+            Wed
+            <br />
+            ⛈
+            <p class="day">34° 24°</p>
+          </div>
+
+          <div class="col">
+            Thur
+            <br />
+            ⛈
+            <p class="day">34° 24°</p>
+          </div>
+        </div>
+      </form>
+    </div>
+    <script>
+      let date = new Date();
+
+      let h3 = document.querySelector("h3");
+
+      let hours = date.getHours();
+
+      if (hours < 10) {
+        hours = `0${hours}`;
+      }
+
+      let minutes = date.getMinutes();
+      if (minutes < 10) {
+        minutes = `0${minutes}`;
+      }
+
+      let days = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ];
+      let weekday = days[date.getDay(2)];
+
+      h3.innerHTML = `${weekday} ${hours}:${minutes}`;
+
+      function city(event) {
+        event.preventDefault();
+        let searchCity = document.querySelector("#search-city");
+
+        let h2 = document.querySelector("h2");
+        h2.innerHTML = `Please wait, the search is ${searchCity.value}.....`;
+      }
+      let form = document.querySelector("#myForm");
+
+      form.addEventListener("submit", city);
+    </script>
+  </body>
+</html>
